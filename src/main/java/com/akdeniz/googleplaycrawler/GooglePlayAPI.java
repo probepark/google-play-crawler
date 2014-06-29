@@ -236,6 +236,9 @@ public class GooglePlayAPI {
     public DetailsResponse details(String packageName) throws IOException {
         ResponseWrapper responseWrapper = executeGETRequest(DETAILS_URL, new String[][]{{"doc", packageName},});
 
+        PreFetch preFetch = responseWrapper.getPreFetch(0);
+        ResponseWrapper list = ResponseWrapper.parseFrom(preFetch.getResponse());
+//        System.out.println(list);
         return responseWrapper.getPayload().getDetailsResponse();
     }
 
@@ -484,7 +487,7 @@ public class GooglePlayAPI {
     private HttpEntity executeGet(String url, String[][] getParams, String[][] headerParams) throws IOException {
 
         if (getParams != null) {
-            List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+            List<NameValuePair> formparams = new ArrayList<>();
 
             for (String[] param : getParams) {
                 if (param[0] != null && param[1] != null) {

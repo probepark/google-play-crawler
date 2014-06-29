@@ -212,8 +212,10 @@ public class googleplay {
                     break;
                 case DETAILS:
                     detailsCommand();
+                    break;
                 case USER_ACTIVITY:
                     userActivities();
+                    break;
 
             }
         } catch (Exception e) {
