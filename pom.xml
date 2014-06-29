@@ -120,23 +120,17 @@
 				<artifactId>maven-protoc-plugin</artifactId>
 				<version>0.3.2</version>
 
-				<configuration>
-					<protocExecutable>protoc</protocExecutable>
-					<protoSourceRoot>${project.basedir}/src/main/protobuf/</protoSourceRoot>
-					<languageSpecifications>
-						<LanguageSpecification>
-							<language>JAVA</language>
-							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-						</LanguageSpecification>
-					</languageSpecifications>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
+                <configuration>
+                    <protocExecutable>/usr/local/bin/protoc</protocExecutable>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 		</plugins>
 	</build>

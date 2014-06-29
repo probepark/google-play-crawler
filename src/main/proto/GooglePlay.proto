@@ -603,7 +603,7 @@ message DocV2 {
   optional ContainerMetadata containerMetadata = 12;
   optional DocumentDetails details = 13;
   optional AggregateRating aggregateRating = 14;
-
+  optional Annotations annotations = 15;
   optional string detailsUrl = 16;
   optional string shareUrl = 17;
   optional string reviewsUrl = 18;
@@ -1037,4 +1037,210 @@ message ProductDetailsSection {
 
 message PersonDetails {
     optional bool personIsRequester = 1;
+}
+
+message Annotations {
+    optional SectionMetadata sectionRelated = 1;
+    optional SectionMetadata sectionMoreBy = 2;
+    optional PlusOneData plusOneData = 3;
+    repeated Warning warning = 4;
+    optional SectionMetadata sectionBodyOfWork = 5;
+    optional SectionMetadata sectionCoreContent = 6;
+    optional Template template = 7;
+    repeated Badge badgeForCreator = 8;
+    repeated Badge badgeForDoc = 9;
+    optional Link link = 10;
+    optional SectionMetadata sectionCrossSell = 11;
+    optional SectionMetadata sectionRelatedDocType = 12;
+    repeated PromotedDoc promotedDoc = 13;
+    optional string offerNote = 14;
+    repeated DocV2 subscription = 16;
+    optional OBSOLETE_Reason oBSOLETEReason = 17;
+    optional string privacyPolicyUrl = 18;
+    optional SuggestionReasons suggestionReasons = 19;
+    optional Warning optimalDeviceClassWarning = 20;
+    repeated BadgeContainer docBadgeContainer = 21;
+    optional SectionMetadata sectionSuggestForRating = 22;
+    optional SectionMetadata sectionRateAndReview = 23;
+    optional SectionMetadata sectionPurchaseCrossSell = 24;
+}
+message SectionMetadata {
+    optional string header = 1;
+    optional string listUrl = 2;
+    optional string browseUrl = 3;
+    optional string descriptionHtml = 4;
+}
+message Warning {
+    optional string localizedMessage = 1;
+}
+message Template {
+    optional SeriesAntenna seriesAntenna = 1;
+    optional TileTemplate tileGraphic2X1 = 2;
+    optional TileTemplate tileGraphic4X2 = 3;
+    optional TileTemplate tileGraphicColoredTitle2X1 = 4;
+    optional TileTemplate tileGraphicUpperLeftTitle2X1 = 5;
+    optional TileTemplate tileDetailsReflectedGraphic2X2 = 6;
+    optional TileTemplate tileFourBlock4X2 = 7;
+    optional ContainerWithBanner containerWithBanner = 8;
+    optional DealOfTheDay dealOfTheDay = 9;
+    optional TileTemplate tileGraphicColoredTitle4X2 = 10;
+    optional EditorialSeriesContainer editorialSeriesContainer = 11;
+    optional RecommendationsContainer recommendationsContainer = 12;
+    optional NextBanner nextBanner = 13;
+    optional RateContainer rateContainer = 14;
+    optional AddToCirclesContainer addToCirclesContainer = 15;
+    optional TrustedSourceContainer trustedSourceContainer = 16;
+    optional RateAndSuggestContainer rateAndSuggestContainer = 17;
+    optional ActionBanner actionBanner = 18;
+    optional WarmWelcome warmWelcome = 19;
+    optional RecommendationsContainerWithHeader recommendationsContainerWithHeader = 20;
+    optional EmptyContainer emptyContainer = 21;
+    optional MyCirclesContainer myCirclesContainer = 22;
+}
+message SeriesAntenna {
+    optional string seriesTitle = 1;
+    optional string seriesSubtitle = 2;
+    optional string episodeTitle = 3;
+    optional string episodeSubtitle = 4;
+    optional string colorThemeArgb = 5;
+    optional SectionMetadata sectionTracks = 6;
+    optional SectionMetadata sectionAlbums = 7;
+}
+message TileTemplate {
+    optional string colorThemeArgb = 1;
+    optional string colorTextArgb = 2;
+}
+message ContainerWithBanner {
+    optional string colorThemeArgb = 1;
+}
+message DealOfTheDay {
+    optional string featuredHeader = 1;
+    optional string colorThemeArgb = 2;
+}
+message EditorialSeriesContainer {
+    optional string seriesTitle = 1;
+    optional string seriesSubtitle = 2;
+    optional string episodeTitle = 3;
+    optional string episodeSubtitle = 4;
+    optional string colorThemeArgb = 5;
+    repeated VideoSnippet videoSnippet = 6;
+}
+message EmptyContainer {
+    optional string emptyMessage = 1;
+}
+message MyCirclesContainer {
+}
+message NextBanner {
+    optional string title = 1;
+    optional string subtitle = 2;
+    optional string colorTextArgb = 3;
+}
+message VideoSnippet {
+    repeated Image image = 1;
+    optional string title = 2;
+    optional string description = 3;
+}
+message WarmWelcome {
+    repeated CallToAction action = 1;
+}
+message AddToCirclesContainer {
+}
+message TrustedSourceContainer {
+    optional DocV2 source = 1;
+}
+message RateAndSuggestContainer {
+}
+message RateContainer {
+}
+message ActionBanner {
+    repeated CallToAction action = 1;
+    optional DocV2 primaryFace = 2;
+    repeated DocV2 secondaryFace = 4;
+}
+message CallToAction {
+    optional int32 type = 1;
+    optional string buttonText = 2;
+    optional Image buttonIcon = 3;
+    optional string dismissalUrl = 4;
+    optional Link link = 5;
+}
+message Link {
+    optional string uri = 1;
+    optional ResolvedLink resolvedLink = 2;
+    optional int32 uriBackend = 3;
+}
+message ResolvedLink {
+    optional string detailsUrl = 1;
+    optional string browseUrl = 2;
+    optional string searchUrl = 3;
+    optional DirectPurchase directPurchase = 4;
+    optional string homeUrl = 5;
+    optional RedeemGiftCard redeemGiftCard = 6;
+}
+message DirectPurchase {
+    optional string detailsUrl = 1;
+    optional string purchaseDocid = 2;
+    optional string parentDocid = 3;
+    optional int32 offerType = 4;
+}
+message RedeemGiftCard {
+    optional string prefillCode = 1;
+    optional string partnerPayloade = 2;
+}
+message RecommendationsContainerWithHeader {
+    optional DocV2 primaryFace = 1;
+    repeated DocV2 secondaryFace = 3;
+}
+message Badge {
+    optional string title = 1;
+    repeated Image image = 2;
+    optional string browseUrl = 3;
+    optional string description = 4;
+}
+message BadgeContainer {
+    optional string title = 1;
+    repeated Image image = 2;
+    repeated Badge badge = 3;
+}
+message OBSOLETE_Reason {
+    optional string briefReason = 1;
+    optional string oBSOLETEDetailedReason = 2;
+    optional string uniqueId = 3;
+}
+message SuggestionReasons {
+    repeated Reason reason = 2;
+    optional Dismissal neutralDismissal = 4;
+    optional Dismissal positiveDismissal = 5;
+}
+message Reason {
+    optional string descriptionHtml = 3;
+    optional ReasonPlusOne reasonPlusOne = 4;
+    optional ReasonReview reasonReview = 5;
+    optional Dismissal dismissal = 7;
+    optional ReasonUserAction reasonUserAction = 9;
+}
+message ReasonPlusOne {
+    optional string localizedDescriptionHtml = 1;
+    repeated OBSOLETE_PlusProfile oBSOLETEPlusProfile = 2;
+    repeated DocV2 person = 3;
+}
+message ReasonReview {
+    optional Review review = 1;
+}
+message ReasonUserAction {
+    optional DocV2 person = 1;
+    optional string localizedDescriptionHtml = 2;
+}
+message PromotedDoc {
+    optional string title = 1;
+    optional string subtitle = 2;
+    repeated Image image = 3;
+    optional string descriptionHtml = 4;
+    optional string detailsUrl = 5;
+}
+message Dismissal {
+    optional string url = 1;
+    optional string descriptionHtml = 2;
+}
+message RecommendationsContainer {
 }
