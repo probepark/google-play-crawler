@@ -468,6 +468,7 @@ message DocumentDetails {
   optional TvShowDetails tvShowDetails = 9;
   optional TvSeasonDetails tvSeasonDetails = 10;
   optional TvEpisodeDetails tvEpisodeDetails = 11;
+  optional PersonDetails personDetails = 12;
 }
 message FileMetadata {
   optional int32 fileType = 1;
@@ -610,6 +611,10 @@ message DocV2 {
   optional string purchaseDetailsUrl = 20;
   optional bool detailsReusable = 21;
   optional string subtitle = 22;
+  optional string translatedDescriptionHtml = 23;
+  optional bytes serverLogsCookie = 24;
+  optional ProductDetails productDetails = 25;
+  optional bool mature = 26;
 }
 message EncryptedSubscriberInfo {
   optional string data = 1;
@@ -755,8 +760,8 @@ message Payload {
   optional BrowseResponse browseResponse = 7;
   optional PurchaseStatusResponse purchaseStatusResponse = 8;
   optional BulkDetailsResponse bulkDetailsResponse = 19;
-  optional UploadDeviceConfigResponse uploadDeviceConfigResponse = 25;
-  optional AndroidCheckinResponse androidCheckinResponse = 26;
+  optional UploadDeviceConfigResponse uploadDeviceConfigResponse = 28;
+  optional PlusProfileResponse plusProfileResponse = 29;
 }
 message PreFetch {
   optional string url = 1;
@@ -793,7 +798,8 @@ message Review {
   optional string deviceName = 19;
   optional string replyText = 29;
   optional int64 replyTimestampMsec = 30;
-  optional Author author = 31;
+  optional OBSOLETE_PlusProfile oBSOLETEPlusProfile = 31;
+  optional DocV2 author = 33;
 }
 message Author {
   optional string name = 2;
@@ -808,6 +814,8 @@ message Avatar {
 message ReviewResponse {
   optional GetReviewsResponse getResponse = 1;
   optional string nextPageUrl = 2;
+  optional Review updatedReview = 3;
+  optional string suggestionsListUrl = 4;
 }
 
 message RelatedSearch {
@@ -990,4 +998,43 @@ message StatCounters {
 }
 message UsageStatsExtensionProto {
     optional AndroidDataUsageProto dataUsage = 1;
+}
+
+message OBSOLETE_PlusProfile {
+    optional string displayName = 2;
+    optional string profileImageUrl = 4;
+    optional Image profileImage = 5;
+}
+
+message UserActivitySettingsResponse {
+    optional DocV2 currentUser = 1;
+    optional string settingsTitle = 2;
+    optional string settingsDescription = 3;
+    optional string settingsTosHtml = 4;
+    optional bool optIn = 5;
+}
+
+message RecordUserActivityResponse {
+}
+
+message PlusProfileResponse {
+    optional OBSOLETE_PlusProfile plusProfile = 1;
+    optional DocV2 partialUserProfile = 2;
+}
+
+message ProductDetails {
+    optional string title = 1;
+    repeated ProductDetailsSection section = 2;
+}
+message ProductDetailsDescription {
+    optional Image image = 1;
+    optional string description = 2;
+}
+message ProductDetailsSection {
+    optional string title = 1;
+    repeated ProductDetailsDescription description = 3;
+}
+
+message PersonDetails {
+    optional bool personIsRequester = 1;
 }

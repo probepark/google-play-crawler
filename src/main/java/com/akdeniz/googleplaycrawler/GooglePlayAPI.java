@@ -541,7 +541,7 @@ public class GooglePlayAPI {
 		{ "X-DFE-Device-Id", this.getAndroidID() },
 		{ "X-DFE-Client-Id", "am-android-google" },
 		{ "User-Agent",
-			"Android-Finsky/3.10.14 (api=3,versionCode=8016014,sdk=15,device=GT-I9300,hardware=aries,product=GT-I9300)" },
+			"Android-Finsky/3.10.14 (api=3,versionCode=80280020,sdk=15,device=GT-I9300,hardware=aries,product=GT-I9300)" },
 		{ "X-DFE-SmallestScreenWidthDp", "320" }, { "X-DFE-Filter-Level", "3" },
 		{ "Host", "android.clients.google.com" },
 		{ "Content-Type", (contentType != null) ? contentType : "application/x-www-form-urlencoded; charset=UTF-8" } };
