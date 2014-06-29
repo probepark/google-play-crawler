@@ -1,16 +1,16 @@
 package com.akdeniz.googleplaycrawler.gsf;
 
+import com.akdeniz.googleplaycrawler.GooglePlay.AndroidAppDeliveryData;
+import com.akdeniz.googleplaycrawler.GooglePlay.HttpCookie;
+import com.akdeniz.googleplaycrawler.GooglePlay.Notification;
+import com.akdeniz.googleplaycrawler.GooglePlayAPI;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import com.akdeniz.googleplaycrawler.GooglePlayAPI;
-import com.akdeniz.googleplaycrawler.GooglePlay.AndroidAppDeliveryData;
-import com.akdeniz.googleplaycrawler.GooglePlay.HttpCookie;
-import com.akdeniz.googleplaycrawler.GooglePlay.Notification;
 
 /**
  * Handles download notifications.

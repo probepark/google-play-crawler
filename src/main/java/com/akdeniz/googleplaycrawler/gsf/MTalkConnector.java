@@ -1,20 +1,5 @@
 package com.akdeniz.googleplaycrawler.gsf;
 
-import java.net.InetSocketAddress;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-
-import org.apache.mina.core.future.ConnectFuture;
-import org.apache.mina.core.session.IoSession;
-import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.ssl.SslFilter;
-import org.apache.mina.transport.socket.nio.NioSocketConnector;
-
 import com.akdeniz.googleplaycrawler.GooglePlay.Notification;
 import com.akdeniz.googleplaycrawler.gsf.GoogleServicesFramework.AppData;
 import com.akdeniz.googleplaycrawler.gsf.GoogleServicesFramework.Close;
@@ -24,6 +9,18 @@ import com.akdeniz.googleplaycrawler.gsf.packets.UnknownResponse;
 import com.akdeniz.googleplaycrawler.misc.Base64;
 import com.akdeniz.googleplaycrawler.misc.DummyX509TrustManager;
 import com.google.protobuf.Message;
+import org.apache.mina.core.future.ConnectFuture;
+import org.apache.mina.core.session.IoSession;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.filter.ssl.SslFilter;
+import org.apache.mina.transport.socket.nio.NioSocketConnector;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * This class connects and logins <i>mtalk.google.com:5228</i> server and

@@ -1,8 +1,6 @@
 package com.akdeniz.googleplaycrawler;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -12,9 +10,10 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.impl.conn.SchemeRegistryFactory;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
@@ -111,7 +110,12 @@ public class GooglePlayAPI {
     public GooglePlayAPI(String email, String password) {
         this.setEmail(email);
         this.password = password;
-        setClient(new DefaultHttpClient(getConnectionManager()));
+
+        List<Header> headers = new ArrayList<>();
+//        headers.add(new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/json"));
+        headers.add(new BasicHeader(HttpHeaders.ACCEPT_LANGUAGE, "ko-KR"));
+        HttpClient client = HttpClients.custom().setDefaultHeaders(headers).build();
+        setClient(client);
     }
 
     /**

@@ -229,14 +229,14 @@ public class googleplay {
 
         String ogi = namespace.getString("ogi");
         ListResponse listResponse = service.userActivities(ogi, 0, 20);
-        System.out.println(listResponse);
+        Utils.print(listResponse);
     }
 
     private void detailsCommand() throws Exception {
         login();
         String detailsUrl = namespace.getString("detail");
         DetailsResponse details = service.details(detailsUrl);
-        System.out.print(details);
+        Utils.print(details);
     }
 
     private void useGCMCommand() throws Exception {
@@ -337,7 +337,7 @@ public class googleplay {
         if (response.getReviewCount() == 0) {
             System.out.println("No review found!");
         }
-        System.out.println(response);
+        Utils.print(response);
     }
 
     private void registerCommand() throws Exception {

@@ -1,9 +1,9 @@
 package com.akdeniz.googleplaycrawler.gsf;
 
+import com.google.protobuf.Message;
+
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
-
-import com.google.protobuf.Message;
 
 /**
  * Base of message filters.
