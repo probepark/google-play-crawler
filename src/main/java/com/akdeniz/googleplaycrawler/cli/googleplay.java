@@ -235,8 +235,11 @@ public class googleplay {
     private void detailsCommand() throws Exception {
         login();
         String detailsUrl = namespace.getString("detail");
-        DetailsResponse details = service.details(detailsUrl);
+        Payload payload = service.details(detailsUrl).getPayload();
+        DetailsResponse details = payload.getDetailsResponse();
         Utils.print(details);
+        ListResponse listResponse = payload.getListResponse();
+        Utils.print(listResponse);
     }
 
     private void useGCMCommand() throws Exception {
@@ -584,7 +587,7 @@ public class googleplay {
     }
 
     private void download(String packageName) throws IOException {
-        DetailsResponse details = service.details(packageName);
+        DetailsResponse details = service.details(packageName).getPayload().getDetailsResponse();
         AppDetails appDetails = details.getDocV2().getDetails().getAppDetails();
         Offer offer = details.getDocV2().getOffer(0);
 

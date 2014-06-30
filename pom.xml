@@ -4,7 +4,7 @@
 
 	<groupId>com.akdeniz</groupId>
 	<artifactId>googleplaycrawler</artifactId>
-	<version>0.3</version>
+	<version>0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Google Play Crawler</name>
@@ -16,6 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <httpclient-cache.version>4.3</httpclient-cache.version>
+        <maven-jar-plugin-version>2.4</maven-jar-plugin-version>
     </properties>
 
 	<dependencies>
@@ -133,6 +134,36 @@
                     </execution>
                 </executions>
 			</plugin>
+            <plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin-version}</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <mode>development</mode>
+                            <url>${project.url}</url>
+                            <implementation-version>${project.version}</implementation-version>
+                            <package>com.akdeniz.googleplaycrawler</package>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 </project>

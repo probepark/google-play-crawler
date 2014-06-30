@@ -237,13 +237,13 @@ public class GooglePlayAPI {
      * to fetch information about more than one application, consider to use
      * <code>bulkDetails</code>.
      */
-    public DetailsResponse details(String packageName) throws IOException {
+    public ResponseWrapper details(String packageName) throws IOException {
         ResponseWrapper responseWrapper = executeGETRequest(DETAILS_URL, new String[][]{{"doc", packageName},});
 
         PreFetch preFetch = responseWrapper.getPreFetch(0);
-        ResponseWrapper list = ResponseWrapper.parseFrom(preFetch.getResponse());
-//        System.out.println(list);
-        return responseWrapper.getPayload().getDetailsResponse();
+        ResponseWrapper wrapper = ResponseWrapper.parseFrom(preFetch.getResponse());
+
+        return ResponseWrapper.newBuilder(wrapper).mergeFrom(responseWrapper).build();
     }
 
     /**
